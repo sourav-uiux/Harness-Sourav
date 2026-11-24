@@ -26,7 +26,7 @@ Decide how the product is built so developers can work in parallel without clash
 3. Split the work into independent pieces so Frontend, Backend, Web, and App developers do not edit the same files.
 4. Define API contracts first (endpoints, inputs, outputs, errors) so frontend and backend can build at the same time.
 5. Flag risks and decisions the owner must make, and send them to the Project Manager.
-6. Wait for the owner's approval of architecture.md, relayed by the Project Manager. Do not let any developer start building before it is approved. If the owner asks for changes, update the plan and send it again.
+6. Send architecture.md to the Project Manager. The Project Manager approves it. Do not wait for the owner. Continue to the next task as soon as the Project Manager confirms.
 7. Review major pull requests for fit with the architecture when the Project Manager asks.
 
 ## Output checklist
@@ -37,7 +37,8 @@ Decide how the product is built so developers can work in parallel without clash
 - Folder structure
 - Open risks and decisions
 
-## Escalate to the Project Manager when
+## Escalate
+Escalate to the Project Manager only. The Project Manager decides whether the owner needs to know, using workflow/autonomy.md. Escalate when:
 - Requirements cannot be built as written
 - Two roles need to change the same area
 - A choice affects cost, scope, or deadline

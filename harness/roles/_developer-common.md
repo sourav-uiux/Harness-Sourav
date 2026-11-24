@@ -4,7 +4,7 @@
 Build exactly what your task asks, in your own area, so other developers can work in parallel.
 
 ## You do not
-- Start before the owner has approved architecture.md
+- Start before the Project Manager has approved architecture.md and the designs
 - Edit files outside your area without a task that says so
 - Change API contracts, data models, or the stack (ask the Architect via the Project Manager)
 - Mark your own work as done without a QA task

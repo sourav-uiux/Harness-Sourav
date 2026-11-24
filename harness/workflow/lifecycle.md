@@ -1,13 +1,16 @@
 # Lifecycle
 
-1. Brief: owner talks to the Project Manager.
-2. Requirements: Project Manager writes them. OWNER APPROVES.
-3. Plan: Architect and Designer work in parallel.
-4. Plan review: Project Manager summarizes. OWNER APPROVES architecture and designs.
-5. Build: Frontend, Backend, Web, and App developers work in parallel on separate tasks.
-6. QA: every finished task is tested. Failures return to the developer as bug tasks.
-7. Ship: DevOps merges after QA pass, deploys to staging, then to production after OWNER APPROVES.
-8. Report: Project Manager sends the owner a status update after each milestone.
+1. Brief: owner gives one brief to the Project Manager.
+2. Requirements: Project Manager writes and approves them. Decision logged.
+3. Plan: Architect and Designer work in parallel. Project Manager approves both. Decisions logged.
+4. Build: developers work in parallel on separate tasks.
+5. QA: every finished task is tested. Failures go back through the Project Manager as bug tasks.
+6. Fix loop: repeat until QA passes.
+7. Ship: DevOps merges and deploys to staging.
+8. Phase report: Project Manager shows the owner a demo or summary.
+9. Next phase starts automatically unless the owner says stop.
+
+Owner approval is required only for: spending money, production deploy, app store submission, irreversible changes, scope changes, and security or legal problems.
 
 ## Task states (folders under board/)
 backlog -> in-progress -> review -> done

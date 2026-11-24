@@ -6,15 +6,26 @@ The human owner interfaces exclusively with the **Project Manager (PM)**. The PM
 
 ---
 
+## Autonomous Mode
+
+The harness operates under an autonomous workflow model defined in `workflow/autonomy.md`:
+- **One Brief:** The owner provides a single brief to start a project.
+- **Autonomous Execution:** The Project Manager runs the project phase by phase alone without stopping to ask the owner at every step. The PM approves requirements, technical plans, and designs directly.
+- **Decision Logging:** Every technical choice, priority call, or assumption is logged in `projects/<name>/reports/decisions.md` with date, reason, and advising role.
+- **Phase Reports:** At the end of each phase, the PM writes a report (`projects/<name>/reports/phase-<n>.md`) and presents a summary or demo for the owner. The next phase begins automatically unless the owner requests changes.
+- **Strict Owner Escalation:** The PM only stops and asks the owner for spending real money, production deploy and app store submissions, deleting data/irreversible changes, scope/brief changes, or security/legal issues.
+
+---
+
 ## Two Layers
 
 1. **Harness Layer (`harness/`):**
    - Generic and reusable across all projects.
-   - Contains role definitions, workflow lifecycle rules, task/handoff templates, and launcher scripts.
+   - Contains role definitions, autonomy rules, workflow lifecycle rules, task/handoff templates, and launcher scripts.
 
 2. **Project Layer (`projects/`):**
    - Specific to each product being built.
-   - Contains the product goal, requirements, design specs, live Kanban task board (`backlog/`, `in-progress/`, `review/`, `done/`), and PM status reports.
+   - Contains the product goal, requirements, design specs, live Kanban task board (`backlog/`, `in-progress/`, `review/`, `done/`), and PM status/phase reports.
 
 ---
 
@@ -35,6 +46,7 @@ harness/
     qa-engineer.md       # Test plans, automated/manual QA, bug reports
     devops-engineer.md   # Worktree setup, CI/CD, environments, deployments
   workflow/
+    autonomy.md          # Autonomy rules, PM authority boundaries, and escalation criteria
     lifecycle.md         # Full delivery lifecycle and task state transitions
     handoff-rules.md     # What each role must produce before handoff
     definition-of-done.md# Verification checklist before closing tasks
@@ -57,7 +69,7 @@ projects/
       in-progress/
       review/
       done/
-    reports/             # Periodic status reports from the PM
+    reports/             # Periodic status reports, decisions.md, and phase reports
 ```
 
 ---
@@ -98,22 +110,23 @@ In `projects/<project-name>/project.md`, specify:
 ### Step 2: Start the Project Manager
 Open an agent (e.g. in Antigravity) and paste:
 ```
-You are the Project Manager on project <project-name>. First read harness/roles/project-manager.md and follow it exactly. Then read projects/<project-name>/project.md and the board folders. I am the owner. Start by asking me any questions you need about the goal, then write the requirements for my approval.
+You are the Project Manager on project <project-name>. First read harness/workflow/autonomy.md, then harness/roles/project-manager.md. You now have full authority to run this project without asking me at each step. Read projects/<project-name>/project.md, make reasonable assumptions where the brief is unclear, log every decision, and run phase 1 from requirements through QA and staging. Show me the phase report when it is done.
 ```
 
 ---
 
-### Step 3: Owner Approval Gates
-As owner, you speak only to the Project Manager and approve work at **four critical gates**:
-1. **Requirements Approval:** Review and approve `requirements/requirements.md`.
-2. **Architecture & Designs Approval:** Review and approve `designs/architecture.md` and design specifications.
-3. **Production Deployment Approval:** Review staging results before triggering production release.
-4. **App Store Submission Approval:** Authorize mobile builds before app store release.
+### Step 3: Owner Touchpoints
+Under autonomous mode, the owner gives one brief, and the PM handles the rest. Owner approval is required only for:
+1. **Spending Real Money:** Paid APIs, domain purchases, hosting upgrades, or paid third-party tools.
+2. **Production Deployments & App Store Submissions:** Authorizing live production releases and app store uploads.
+3. **Irreversible Operations:** Deleting data or unrecoverable actions.
+4. **Scope / Goal Changes:** Reorienting the project direction.
+5. **Security & Legal Matters:** Critical vulnerabilities, compliance, or licensing questions.
 
 ---
 
 ### Step 4: Launching Other Roles
-Once requirements and architecture are approved and the PM populates task cards in `board/`, launch specialized role agents:
+Once the PM approves requirements and architecture and populates task cards in `board/`, launch specialized role agents:
 ```bash
 ./harness/scripts/start-role.sh <project-name> <role> <tool>
 ```

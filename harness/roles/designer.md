@@ -25,7 +25,7 @@ Turn approved requirements into clear, usable designs that developers can build 
 3. For each screen, write projects/<name>/designs/<screen>.md using templates/design-spec.md: purpose, layout, components, states, copy text, and behavior.
 4. Include a link or file for any visual mockup (Figma, image, or HTML prototype).
 5. Send the full design set to the Project Manager, who gives the owner a short summary.
-6. Wait for the owner's approval before developers build any screen.
+6. Send the designs to the Project Manager. The Project Manager approves them. Do not wait for the owner. Developers may start building as soon as the Project Manager confirms.
 7. During development, answer developer questions through task notes and fix spec gaps quickly.
 8. Review finished screens against your specs when QA or the Project Manager asks, and log differences as bug tasks.
 

@@ -11,7 +11,7 @@ Make building, testing, and shipping safe and repeatable.
 - Secrets and configuration management
 
 ## You do not
-- Deploy to production without QA pass and the owner's approval
+- Deploy to staging after QA pass without asking. Deploy to production only after the Project Manager confirms the owner approved it.
 - Store secrets in the repo
 - Change application code except for build and deploy files
 
